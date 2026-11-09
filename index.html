@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#4338ca" />
+    <meta name="description" content="Hábitos e alimentação, 100% offline." />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Rotina" />
+    <link rel="icon" href="/rotina/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/rotina/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/rotina/apple-touch-icon-180x180.png" />
+    <title>Rotina</title>
+    <script>
+      (function () {
+        try {
+          var saved = JSON.parse(localStorage.getItem('rotina-theme') || 'null')
+          var mode = (saved && saved.mode) || 'system'
+          var dark = mode === 'dark' || (mode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          var root = document.documentElement
+          root.dataset.theme = dark ? 'dark' : 'light'
+          var meta = document.querySelector('meta[name="theme-color"]')
+          if (meta) meta.setAttribute('content', dark ? '#111318' : (saved ? saved.base : '#4338ca'))
+          if (saved) root.style.setProperty('--accent', dark ? saved.bright : saved.base)
+        } catch (e) {}
+      })()
+    </script>
+    <script type="module" crossorigin src="/rotina/assets/index-CDeiubpW.js"></script>
+    <link rel="stylesheet" crossorigin href="/rotina/assets/index--ItA31gW.css">
+  <link rel="manifest" href="/rotina/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/rotina/registerSW.js"></script></head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
